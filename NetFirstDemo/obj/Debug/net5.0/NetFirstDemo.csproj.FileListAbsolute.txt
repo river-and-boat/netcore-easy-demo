@@ -31,3 +31,10 @@
 /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.InMemory.dll
 /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/Microsoft.Extensions.DependencyInjection.dll
 /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/System.Diagnostics.DiagnosticSource.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/NetFirstDemo/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll

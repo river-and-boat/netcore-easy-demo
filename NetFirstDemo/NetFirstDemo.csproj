@@ -14,17 +14,29 @@
     <None Remove="MySql.Data" />
     <None Remove="Microsoft.EntityFrameworkCore.InMemory" />
     <None Remove="Service\" />
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Extension\" />
+    <None Remove="Service\authentication\" />
+    <None Remove="Model\authentication\" />
+    <None Remove="Model\authentication\user\" />
+    <None Remove="Model\authentication\token\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Data\" />
     <Folder Include="Model\" />
     <Folder Include="Service\" />
+    <Folder Include="Extension\" />
+    <Folder Include="Service\authentication\" />
+    <Folder Include="Model\authentication\" />
+    <Folder Include="Model\authentication\user\" />
+    <Folder Include="Model\authentication\token\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.5" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.5" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
   </ItemGroup>
 </Project>

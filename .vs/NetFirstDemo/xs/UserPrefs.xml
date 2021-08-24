@@ -7,11 +7,18 @@
             <Node name="NetFirstDemo" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
-              <Node name="Model" expanded="True" />
-              <Node name="Service" expanded="True" />
-              <Node name="appsettings.json" expanded="True">
-                <Node name="appsettings.Development.json" selected="True" />
+              <Node name="Extension" expanded="True" />
+              <Node name="Model" expanded="True">
+                <Node name="authentication" expanded="True">
+                  <Node name="token" expanded="True" />
+                </Node>
               </Node>
+              <Node name="Service" expanded="True">
+                <Node name="authentication" expanded="True">
+                  <Node name="JwtAuthenticationService.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>

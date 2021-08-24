@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NetFirstDemo.Model;
 using NetFirstDemo.Service;
@@ -19,6 +20,7 @@ namespace NetFirstDemo.Controllers
 
         [HttpGet]
         [Route("items/{id}")]
+        [Authorize(Roles = "customer")]
         public async Task<ActionResult<TodoItem>> GetTodoItem(long id)
         {
             return Ok(await service.GetTodoItemAsync(id));
@@ -26,6 +28,7 @@ namespace NetFirstDemo.Controllers
 
         [HttpPost]
         [Route("items")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult<TodoItem>> AddTodoItem(TodoItem todoItem)
         {
             TodoItem result = await service.AddTodoItemAsync(todoItem);
@@ -35,6 +38,7 @@ namespace NetFirstDemo.Controllers
 
         [HttpPut]
         [Route("/items")]
+        [Authorize(Roles = "admin, user")]
         public async Task<ActionResult> PutTodoItem(TodoItem todoItem)
         {
             try
@@ -51,6 +55,7 @@ namespace NetFirstDemo.Controllers
 
         [HttpDelete]
         [Route("/items")]
+        [Authorize(Roles = "admin, user")]
         public async Task<ActionResult> DeleteTodoItem(long id)
         {
             try

@@ -1,33 +1,34 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NetFirstDemo.Data;
+using NetFirstDemo.Extension;
 using NetFirstDemo.Service;
+using NetFirstDemo.Service.authentication;
 
 namespace NetFirstDemo
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+            
+        }
+
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerConfiguration();
+            services.AddTokenConfiguration(Configuration);
+            services.AddDbContextConfiguration();
             services.AddControllers();
-            services.AddSwaggerGen(swagger =>
-            {
-                swagger.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Title = "WebApiDemo",
-                    Version = "v1"
-                });
-            });
-            services.AddDbContext<TodoContext>(opt =>
-            {
-                opt.UseInMemoryDatabase("TodoList");
-            });
             services.AddScoped<TodoListService>();
+            services.AddScoped<IAuthenticationService, JwtAuthenticationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +45,8 @@ namespace NetFirstDemo
             }
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
