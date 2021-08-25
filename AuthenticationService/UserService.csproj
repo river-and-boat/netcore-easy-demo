@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'AuthenticationService' " />
+  <ItemGroup>
+    <None Remove="Controller\" />
+    <None Remove="Service\" />
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Model\" />
+    <None Remove="Controller\Request\" />
+    <None Remove="Controller\Response\" />
+    <None Remove="Extension\" />
+    <None Remove="Model\Authentication\" />
+    <None Remove="Model\Management\" />
+    <None Remove="Service\Authentication\" />
+    <None Remove="Service\Management\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controller\" />
+    <Folder Include="Service\" />
+    <Folder Include="Model\" />
+    <Folder Include="Controller\Request\" />
+    <Folder Include="Controller\Response\" />
+    <Folder Include="Extension\" />
+    <Folder Include="Model\Authentication\" />
+    <Folder Include="Model\Management\" />
+    <Folder Include="Service\Authentication\" />
+    <Folder Include="Service\Management\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
+  </ItemGroup>
+</Project>

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.810.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFirstDemo", "NetFirstDemo\NetFirstDemo.csproj", "{B465A9E7-75AF-4B2F-A2D3-D8212FF1ED0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "AuthenticationService\UserService.csproj", "{CCFEA20A-D383-480D-BC21-DA45736942FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGatewayService", "APIGatewayService\APIGatewayService.csproj", "{F66CFFFC-4860-4FA0-8265-8C1A799A9242}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanService", "PlanService\PlanService.csproj", "{AD4D7AC1-2731-4001-A785-1BA74E9A0CD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B465A9E7-75AF-4B2F-A2D3-D8212FF1ED0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B465A9E7-75AF-4B2F-A2D3-D8212FF1ED0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B465A9E7-75AF-4B2F-A2D3-D8212FF1ED0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B465A9E7-75AF-4B2F-A2D3-D8212FF1ED0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFEA20A-D383-480D-BC21-DA45736942FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFEA20A-D383-480D-BC21-DA45736942FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFEA20A-D383-480D-BC21-DA45736942FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFEA20A-D383-480D-BC21-DA45736942FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F66CFFFC-4860-4FA0-8265-8C1A799A9242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F66CFFFC-4860-4FA0-8265-8C1A799A9242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F66CFFFC-4860-4FA0-8265-8C1A799A9242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F66CFFFC-4860-4FA0-8265-8C1A799A9242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD4D7AC1-2731-4001-A785-1BA74E9A0CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4D7AC1-2731-4001-A785-1BA74E9A0CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4D7AC1-2731-4001-A785-1BA74E9A0CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4D7AC1-2731-4001-A785-1BA74E9A0CD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

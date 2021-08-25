@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "6qISPQd3nUujbNNtKvgGWnLSt9MGHhUMFrGEETlFaUmKgm925R7SZ6Da/zJ0t4ldxEwW0kBrGQ94bAxnKGYnZw==",
+  "success": true,
+  "projectFilePath": "/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/APIGatewayService/APIGatewayService.csproj",
+  "expectedPackageFiles": [
+    "/Users/yuzhou.jiang/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/swashbuckle.aspnetcore.swagger/6.1.5/swashbuckle.aspnetcore.swagger.6.1.5.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.1.5/swashbuckle.aspnetcore.swaggergen.6.1.5.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.1.5/swashbuckle.aspnetcore.swaggerui.6.1.5.nupkg.sha512"
+  ],
+  "logs": []
+}

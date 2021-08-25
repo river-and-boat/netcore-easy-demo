@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "y6yGF64pHyB+xZo/g9t8GIS7BFvRKcuj9yjWiqbeo6+pSSfppA6qEYjQNqHrQY6jAwEVZS7DHOoCaWIfdTmbHA==",
+  "success": true,
+  "projectFilePath": "/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/UserService.csproj",
+  "expectedPackageFiles": [
+    "/Users/yuzhou.jiang/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/5.0.9/microsoft.aspnetcore.authentication.jwtbearer.5.0.9.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/microsoft.identitymodel.jsonwebtokens/6.7.1/microsoft.identitymodel.jsonwebtokens.6.7.1.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/microsoft.identitymodel.logging/6.7.1/microsoft.identitymodel.logging.6.7.1.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/microsoft.identitymodel.protocols/6.7.1/microsoft.identitymodel.protocols.6.7.1.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.7.1/microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/microsoft.identitymodel.tokens/6.7.1/microsoft.identitymodel.tokens.6.7.1.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/system.identitymodel.tokens.jwt/6.7.1/system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
+    "/Users/yuzhou.jiang/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
