@@ -1,37 +1,42 @@
-﻿<Properties StartupConfiguration="{CCFEA20A-D383-480D-BC21-DA45736942FD}|AuthenticationService">
-  <MonoDevelop.Ide.ItemProperties.APIGatewayService FirstBuild="True" />
+﻿<Properties StartupConfiguration="{9362E85C-C436-49C2-BD06-B14B3595D7B7}|AuthenticationService">
+  <MonoDevelop.Ide.ItemProperties.APIGatewayService FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.PlanService FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Service/Authentication/JwtAuthenticationService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Middleware/GlobalExceptionHandlerMiddleware.cs">
     <Files>
-      <File FileName="AuthenticationService/Domain/Authentication/UserDetail.cs" Line="11" Column="41" />
-      <File FileName="AuthenticationService/Middleware/GlobalExceptionHandlerMiddleware.cs" Line="11" Column="1" />
-      <File FileName="AuthenticationService/Domain/Authentication/TokenManager.cs" Line="1" Column="1" />
-      <File FileName="AuthenticationService/Exception/GlobalStatusCode.cs" Line="1" Column="1" />
-      <File FileName="AuthenticationService/Filter/ResponseWrapperFilter.cs" Line="1" Column="1" />
-      <File FileName="AuthenticationService/Startup.cs" Line="14" Column="53" />
-      <File FileName="AuthenticationService/Exception/GlobalException.cs" Line="18" Column="2" />
-      <File FileName="AuthenticationService/Exception/GlobalExceptionCode.cs" Line="1" Column="1" />
-      <File FileName="AuthenticationService/Exception/GlobalExceptionMessage.cs" Line="1" Column="1" />
-      <File FileName="AuthenticationService/Service/Authentication/IAuthenticationService.cs" Line="11" Column="22" />
-      <File FileName="AuthenticationService/Service/Authentication/JwtAuthenticationService.cs" Line="21" Column="22" />
+      <File FileName="AuthenticationService/Controller/UserManagementController.cs" Line="25" Column="1" />
+      <File FileName="AuthenticationService/Data/Repository/UserRepository.cs" Line="9" Column="43" />
+      <File FileName="AuthenticationService/Exception/GlobalExceptionMessage.cs" Line="6" Column="78" />
+      <File FileName="AuthenticationService/Service/User/UserManagementService.cs" Line="33" Column="10" />
+      <File FileName="AuthenticationService/Controller/Request/CreateUserRequest.cs" Line="8" Column="1" />
+      <File FileName="AuthenticationService/Controller/Request/LoginRequest.cs" Line="1" Column="1" />
+      <File FileName="AuthenticationService/Controller/AuthenticationController.cs" Line="10" Column="19" />
+      <File FileName="AuthenticationService/Utils/UserMapper.cs" Line="23" Column="36" />
+      <File FileName="AuthenticationService/Data/Repository/IUserRepository.cs" Line="8" Column="6" />
+      <File FileName="AuthenticationService/Filter/ResponseWrapperFilter.cs" Line="3" Column="1" />
+      <File FileName="AuthenticationService/Controller/Response/CommonResponse.cs" Line="5" Column="41" />
+      <File FileName="AuthenticationService/Middleware/GlobalExceptionHandlerMiddleware.cs" Line="25" Column="76" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NetFirstDemo" expanded="True">
             <Node name="UserService" expanded="True">
-              <Node name="Controller" expanded="True" />
-              <Node name="Domain" expanded="True">
-                <Node name="Authentication" expanded="True" />
+              <Node name="Controller" expanded="True">
+                <Node name="Request" expanded="True" />
+                <Node name="Response" expanded="True" />
               </Node>
-              <Node name="Exception" expanded="True" />
+              <Node name="Data" expanded="True">
+                <Node name="Repository" expanded="True" />
+              </Node>
+              <Node name="Domain" expanded="True" />
               <Node name="Filter" expanded="True" />
-              <Node name="Middleware" expanded="True" />
-              <Node name="Service" expanded="True">
-                <Node name="Authentication" expanded="True">
-                  <Node name="JwtAuthenticationService.cs" selected="True" />
-                </Node>
+              <Node name="Middleware" expanded="True">
+                <Node name="GlobalExceptionHandlerMiddleware.cs" selected="True" />
               </Node>
+              <Node name="Service" expanded="True">
+                <Node name="User" expanded="True" />
+              </Node>
+              <Node name="Utils" expanded="True" />
             </Node>
           </Node>
         </State>
