@@ -5,9 +5,9 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace UserService.Domain.Authentication
+namespace UserService.Domain
 {
-    public class TokenManager
+    public class Token
     {
         public string Secret { get; set; }
         public string Issuer { get; set; }
@@ -20,6 +20,26 @@ namespace UserService.Domain.Authentication
         public void AddUsernameAsClaim(string username)
         {
             Claims.Add(new Claim(ClaimTypes.Name, username));
+        }
+
+        public void AddEmailAsClaim(string email)
+        {
+            Claims.Add(new Claim(ClaimTypes.Email, email));
+        }
+
+        public void AddMobileAsClaim(string mobile)
+        {
+            Claims.Add(new Claim(ClaimTypes.MobilePhone, mobile));
+        }
+
+        public void AddAddressAsClaim(string country, string address)
+        {
+            Claims.Add(new Claim(ClaimTypes.StreetAddress, country + ":" + address));
+        }
+
+        public void AddAdditionalInfoAsClaim(string type, string value)
+        {
+            Claims.Add(new Claim(type, value));
         }
 
         public void AddRolesAsClaim(List<string> roles)

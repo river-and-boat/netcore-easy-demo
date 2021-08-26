@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using UserService.Controller.Request;
-using UserService.Domain.Authentication;
 using UserService.Service.Authentication;
 
 namespace UserService.Controller
@@ -11,24 +10,22 @@ namespace UserService.Controller
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationService authenticationService;
-        private readonly TokenManager tokenConfig;
 
         public AuthenticationController(
-            IAuthenticationService authenticationService, IConfiguration configuration)
+            IAuthenticationService authenticationService)
         {
             this.authenticationService = authenticationService;
-            this.tokenConfig = configuration.GetSection("Token").Get<TokenManager>();
         }
 
         [HttpPost]
         [Route("token")]
-        public ActionResult RequestToken([FromBody] LoginRequest request)
+        public async Task<ActionResult> RequestToken([FromBody] LoginRequest request)
         {
-            if (!ModelState.IsValid || !authenticationService.IsAuthenticated(request))
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            return Ok(authenticationService.GenerateToken(request.Username, tokenConfig));
+            return Ok(await authenticationService.GenerateToken(request));
         }
     }
 }

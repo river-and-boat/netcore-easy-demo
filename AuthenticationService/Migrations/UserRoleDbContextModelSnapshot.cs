@@ -50,6 +50,9 @@ namespace UserService.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("Locked")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Mobile")
                         .IsRequired()
                         .HasMaxLength(15)

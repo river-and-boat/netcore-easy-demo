@@ -26,5 +26,9 @@ namespace UserService.Data
                 .WithMany(role => role.Users)
                 .HasForeignKey(manager => manager.RoleId);
         }
+
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
     }
 }

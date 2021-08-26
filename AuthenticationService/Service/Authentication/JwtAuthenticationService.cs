@@ -1,51 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using UserService.Controller.Request;
-using UserService.Domain.Authentication;
+using UserService.Domain;
+using UserService.Exception;
 
 namespace UserService.Service.Authentication
 {
     public class JwtAuthenticationService : IAuthenticationService
     {
-        private readonly Dictionary<string, UserDetail> USERS = new Dictionary<string, UserDetail>()
-        {
-            {
-                "river-and-boat",
-                new UserDetail()
-                {
-                    Locked = false,
-                    Username = "river-and-boat",
-                    Password = "wait for secret",
-                    Roles = new List<string>
-                    {
-                        "admin", "user", "customer"
-                    }
-                }
-            },
-            {
-                "vera_zhang",
-                new UserDetail()
-                {
-                    Locked = true,
-                    Username = "vera_zhang",
-                    Password = "wait for secret",
-                    Roles = new List<string>
-                    {
-                        "user", "customer"
-                    }
-                }
-            }
-        };
+        private readonly UserManagementService userManagementService;
+        private readonly Token token;
 
-        public UserDetail GetUser(string username)
+        public JwtAuthenticationService(
+            UserManagementService userManagementService, IConfiguration configuration)
         {
-            // todo get user from database
-            return USERS[username];
+            this.userManagementService = userManagementService;
+            token = configuration.GetSection("Token").Get<Token>();
         }
 
-        public bool IsAuthenticated(LoginRequest request)
+        public async Task<string> GenerateToken(LoginRequest request)
         {
-            // todo: directly return true, get username and password from datastore
-            return true;
+            User user = await userManagementService.GetUserByUsernameAsync(request.Username);
+            if (user != null)
+            {
+                user.AssertUsernamePasswordMatched(request.Password);
+                user.AssertUserLocked();
+                token.AddUsernameAsClaim(user.Name);
+                token.AddRolesAsClaim(user.Roles);
+                token.AddEmailAsClaim(user.Email);
+                token.AddMobileAsClaim(user.Mobile);
+                token.AddAddressAsClaim(user.Country, user.Address);
+                return token.BuildToken();
+            }
+            throw new GlobalException(
+                GlobalExceptionMessage.USER_NAME_NOT_EXIST,
+                GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
+                GlobalStatusCode.BAD_REQUEST
+            );
         }
     }
 }

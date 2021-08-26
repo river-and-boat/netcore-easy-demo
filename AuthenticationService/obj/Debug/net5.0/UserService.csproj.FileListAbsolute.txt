@@ -37,3 +37,7 @@
 /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/System.Diagnostics.DiagnosticSource.dll
 /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/MySqlConnector.dll
 /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Pomelo.EntityFrameworkCore.MySql.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Newtonsoft.Json.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Newtonsoft.Json.Bson.dll

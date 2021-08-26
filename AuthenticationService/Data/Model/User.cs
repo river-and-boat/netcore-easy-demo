@@ -32,11 +32,15 @@ namespace UserService.Data.Model
         [Required]
         public string Email { get; set; }
 
+        [Required]
+        public bool Locked { get; set; }
+
         public List<UserRole> Roles { get; set; }
 
         public User()
         {
             Roles = new List<UserRole>();
+            Locked = true;
         }
     }
 }

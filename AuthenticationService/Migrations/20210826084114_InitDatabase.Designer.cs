@@ -8,7 +8,7 @@ using UserService.Data;
 namespace UserService.Migrations
 {
     [DbContext(typeof(UserRoleDbContext))]
-    [Migration("20210826080326_InitDatabase")]
+    [Migration("20210826084114_InitDatabase")]
     partial class InitDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,6 +51,9 @@ namespace UserService.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("Locked")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Mobile")
                         .IsRequired()

@@ -2,9 +2,12 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using UserService.Data.Repository;
 using UserService.Extension;
 using UserService.Filter;
 using UserService.Middleware;
+using UserService.Service;
 using UserService.Service.Authentication;
 
 namespace AuthenticationService
@@ -26,8 +29,12 @@ namespace AuthenticationService
             services.AddControllers(option =>
             {
                 option.Filters.Add<ResponseWrapperFilter>();
+            }).AddNewtonsoftJson(option => {
+                option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
             services.AddScoped<IAuthenticationService, JwtAuthenticationService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<UserManagementService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

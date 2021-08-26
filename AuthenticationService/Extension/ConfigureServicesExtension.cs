@@ -3,9 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using UserService.Domain.Authentication;
 using UserService.Data;
 using Microsoft.EntityFrameworkCore;
+using UserService.Domain;
 
 namespace UserService.Extension
 {
@@ -14,7 +14,7 @@ namespace UserService.Extension
         public static void AddTokenConfiguration(
             this IServiceCollection services, IConfiguration configuration)
         {
-            TokenManager tokenManagement = configuration.GetSection("Token").Get<TokenManager>();
+            Token tokenManagement = configuration.GetSection("Token").Get<Token>();
             services.AddAuthentication(auth =>
             {
                 auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
