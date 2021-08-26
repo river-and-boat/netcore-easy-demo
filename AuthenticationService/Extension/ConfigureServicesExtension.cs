@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using UserService.Domain.Authentication;
+using UserService.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace UserService.Extension
 {
     public static class ConfigureServicesExtension
     {
-        public static IServiceCollection AddTokenConfiguration(
+        public static void AddTokenConfiguration(
             this IServiceCollection services, IConfiguration configuration)
         {
             TokenManager tokenManagement = configuration.GetSection("Token").Get<TokenManager>();
@@ -31,7 +33,16 @@ namespace UserService.Extension
                     ValidateAudience = true
                 };
             });
-            return services;
+        }
+
+        public static void AddDatabaseConfiguration(
+            this IServiceCollection services, IConfiguration configuration)
+        {
+            string dbConnection = configuration.GetConnectionString("Mysql");
+            services.AddDbContext<UserRoleDbContext>(option =>
+            {
+                option.UseMySql(dbConnection, ServerVersion.AutoDetect(dbConnection));
+            });
         }
     }
 }

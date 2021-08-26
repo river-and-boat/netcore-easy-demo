@@ -22,6 +22,7 @@ namespace AuthenticationService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTokenConfiguration(Configuration);
+            services.AddDatabaseConfiguration(Configuration);
             services.AddControllers(option =>
             {
                 option.Filters.Add<ResponseWrapperFilter>();
