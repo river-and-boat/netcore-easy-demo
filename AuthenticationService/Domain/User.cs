@@ -37,27 +37,5 @@ namespace UserService.Domain
                     GlobalStatusCode.BAD_REQUEST);
             }
         }
-
-        public static User BuildUser(Data.Model.User user)
-        {
-            if (user == null)
-            {
-                return null;
-            }
-            List<string> roles = new List<string>();
-            user.Roles.ForEach(role => roles.Add(role.Role.Name));
-            return new User()
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Password = user.Password,
-                Address = user.Address,
-                Country = user.Country,
-                Mobile = user.Mobile,
-                Email = user.Email,
-                Locked = user.Locked,
-                Roles = roles
-            };
-        }
     }
 }

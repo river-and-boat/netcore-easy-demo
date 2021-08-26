@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserService.Controller.Request;
 using UserService.Service.Authentication;
@@ -7,6 +8,7 @@ namespace UserService.Controller
 {
     [ApiController]
     [Route("api")]
+    [AllowAnonymous]
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationService authenticationService;
@@ -20,7 +22,7 @@ namespace UserService.Controller
         [HttpPost]
         [Route("token")]
         public async Task<ActionResult> RequestToken([FromBody] LoginRequest request)
-        {
+        {         
             if (!ModelState.IsValid)
             {
                 return BadRequest();

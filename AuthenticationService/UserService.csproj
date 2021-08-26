@@ -28,6 +28,7 @@
     <None Remove="Service\User\" />
     <None Remove="Data\Repository\" />
     <None Remove="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+    <None Remove="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
@@ -44,6 +45,7 @@
     <Folder Include="Data\Model\" />
     <Folder Include="Service\User\" />
     <Folder Include="Data\Repository\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />

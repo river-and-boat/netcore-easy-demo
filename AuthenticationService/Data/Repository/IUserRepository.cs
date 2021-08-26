@@ -1,10 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UserService.Data.Model;
 
 namespace UserService.Data.Repository
 {
     public interface IUserRepository
     {
+        public Task<List<User>> FindUserListAsync();
+
         public Task<User> FindUserByUsernameAsync(string username);
 
         public Task<User> CreateUserAsync(User user);

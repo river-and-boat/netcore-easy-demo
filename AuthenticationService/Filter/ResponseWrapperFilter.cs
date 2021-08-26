@@ -25,10 +25,11 @@ namespace UserService.Filter
                 return;
             }
             var objectResult = result as ObjectResult;
-            objectResult.Value = new CommonResponse<string>
-            (
-                objectResult.Value.ToString(), context.HttpContext.Response.StatusCode
-            );
+            objectResult.Value = new CommonResponse()
+            {
+                Data = objectResult.Value,
+                Code = context.HttpContext.Response.StatusCode
+            };
         }
 
         private void HandleJsonResult(ResultExecutingContext context)
@@ -39,10 +40,11 @@ namespace UserService.Filter
                 return;
             }
             var jsonResult = result as JsonResult;
-            jsonResult.Value = new CommonResponse<string>
-            (
-                jsonResult.Value.ToString(), context.HttpContext.Response.StatusCode
-            );
+            jsonResult.Value = new CommonResponse()
+            {
+                Data = jsonResult.Value,
+                Code = context.HttpContext.Response.StatusCode
+            };
         }
     }
 }

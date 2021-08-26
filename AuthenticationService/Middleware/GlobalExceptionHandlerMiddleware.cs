@@ -22,9 +22,11 @@ namespace UserService.Middleware
             }
             catch (GlobalException ex)
             {
-                CommonResponse<string> commonResponse = new CommonResponse<string>(
-                    Data: ex.Message, Code: ex.Code
-                );
+                CommonResponse commonResponse = new CommonResponse()
+                {
+                    Data = ex.Message,
+                    Code = ex.Code
+                };
                 context.Response.StatusCode = ex.StatusCode;
                 await context.Response.WriteAsJsonAsync(commonResponse);
             }

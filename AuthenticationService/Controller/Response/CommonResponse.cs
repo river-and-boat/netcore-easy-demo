@@ -1,14 +1,8 @@
 ﻿namespace UserService.Controller.Response
 {
-    public class CommonResponse<T>
+    public class CommonResponse
     {
-        public T Data { get; set; }
+        public object Data { get; set; }
         public int Code { get; set; }
-
-        public CommonResponse(T Data, int Code)
-        {
-            this.Data = Data;
-            this.Code = Code;
-        }
     }
 }
