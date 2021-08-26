@@ -17,18 +17,25 @@
     <None Remove="Model\Management\" />
     <None Remove="Service\Authentication\" />
     <None Remove="Service\Management\" />
+    <None Remove="Middleware\" />
+    <None Remove="Filter\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Exception\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="Service\" />
-    <Folder Include="Model\" />
+    <Folder Include="Domain\" />
     <Folder Include="Controller\Request\" />
     <Folder Include="Controller\Response\" />
     <Folder Include="Extension\" />
-    <Folder Include="Model\Authentication\" />
-    <Folder Include="Model\Management\" />
+    <Folder Include="Domain\Authentication\" />
+    <Folder Include="Domain\Management\" />
     <Folder Include="Service\Authentication\" />
     <Folder Include="Service\Management\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Filter\" />
+    <Folder Include="Exception\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />

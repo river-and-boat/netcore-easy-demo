@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using AuthenticationService.Controller.Request;
-using AuthenticationService.Model;
+using UserService.Controller.Request;
+using UserService.Domain.Authentication;
 
-namespace NetFirstDemo.Service.authentication
+namespace UserService.Service.Authentication
 {
     public class JwtAuthenticationService : IAuthenticationService
     {
@@ -25,7 +25,7 @@ namespace NetFirstDemo.Service.authentication
                 "vera_zhang",
                 new UserDetail()
                 {
-                    Locked = false,
+                    Locked = true,
                     Username = "vera_zhang",
                     Password = "wait for secret",
                     Roles = new List<string>

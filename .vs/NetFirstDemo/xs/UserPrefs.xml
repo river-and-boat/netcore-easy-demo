@@ -1,38 +1,43 @@
 ﻿<Properties StartupConfiguration="{CCFEA20A-D383-480D-BC21-DA45736942FD}|AuthenticationService">
   <MonoDevelop.Ide.ItemProperties.APIGatewayService FirstBuild="True" />
   <MonoDevelop.Ide.ItemProperties.PlanService FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Controller/AuthenticationController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Service/Authentication/JwtAuthenticationService.cs">
     <Files>
-      <File FileName="AuthenticationService/appsettings.json" Line="1" Column="1" />
-      <File FileName="AuthenticationService/appsettings.Development.json" Line="10" Column="13" />
-      <File FileName="AuthenticationService/Startup.cs" Line="12" Column="6" />
-      <File FileName="AuthenticationService/Properties/launchSettings.json" Line="11" Column="4" />
-      <File FileName="AuthenticationService/Service/JwtAuthenticationService.cs" Line="11" Column="14" />
-      <File FileName="AuthenticationService/Service/IAuthenticationService.cs" Line="9" Column="43" />
-      <File FileName="AuthenticationService/Controller/AuthenticationController.cs" Line="1" Column="1" />
-      <File FileName="AuthenticationService/Extension/ConfigureServicesExtension.cs" Line="7" Column="1" />
-      <File FileName="AuthenticationService/Model/TokenConfig.cs" Line="13" Column="1" />
-      <File FileName="AuthenticationService/Model/UserDetail.cs" Line="4" Column="22" />
-      <File FileName="AuthenticationService/Controller/Request/LoginRequest.cs" Line="14" Column="1" />
+      <File FileName="AuthenticationService/Domain/Authentication/UserDetail.cs" Line="11" Column="41" />
+      <File FileName="AuthenticationService/Middleware/GlobalExceptionHandlerMiddleware.cs" Line="11" Column="1" />
+      <File FileName="AuthenticationService/Domain/Authentication/TokenManager.cs" Line="1" Column="1" />
+      <File FileName="AuthenticationService/Exception/GlobalStatusCode.cs" Line="1" Column="1" />
+      <File FileName="AuthenticationService/Filter/ResponseWrapperFilter.cs" Line="1" Column="1" />
+      <File FileName="AuthenticationService/Startup.cs" Line="14" Column="53" />
+      <File FileName="AuthenticationService/Exception/GlobalException.cs" Line="18" Column="2" />
+      <File FileName="AuthenticationService/Exception/GlobalExceptionCode.cs" Line="1" Column="1" />
+      <File FileName="AuthenticationService/Exception/GlobalExceptionMessage.cs" Line="1" Column="1" />
+      <File FileName="AuthenticationService/Service/Authentication/IAuthenticationService.cs" Line="11" Column="22" />
+      <File FileName="AuthenticationService/Service/Authentication/JwtAuthenticationService.cs" Line="21" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NetFirstDemo" expanded="True">
             <Node name="UserService" expanded="True">
-              <Node name="Controller" expanded="True">
-                <Node name="Request" expanded="True" />
-                <Node name="AuthenticationController.cs" selected="True" />
-              </Node>
-              <Node name="Extension" expanded="True" />
-              <Node name="Model" expanded="True">
+              <Node name="Controller" expanded="True" />
+              <Node name="Domain" expanded="True">
                 <Node name="Authentication" expanded="True" />
               </Node>
-              <Node name="Properties" expanded="True" />
-              <Node name="Service" expanded="True" />
+              <Node name="Exception" expanded="True" />
+              <Node name="Filter" expanded="True" />
+              <Node name="Middleware" expanded="True" />
+              <Node name="Service" expanded="True">
+                <Node name="Authentication" expanded="True">
+                  <Node name="JwtAuthenticationService.cs" selected="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

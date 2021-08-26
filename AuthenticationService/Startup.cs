@@ -2,9 +2,10 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using NetFirstDemo.Extension;
-using NetFirstDemo.Service.authentication;
+using UserService.Extension;
+using UserService.Filter;
+using UserService.Middleware;
+using UserService.Service.Authentication;
 
 namespace AuthenticationService
 {
@@ -21,17 +22,16 @@ namespace AuthenticationService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTokenConfiguration(Configuration);
-            services.AddControllers();
+            services.AddControllers(option =>
+            {
+                option.Filters.Add<ResponseWrapperFilter>();
+            });
             services.AddScoped<IAuthenticationService, JwtAuthenticationService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+            app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace AuthenticationService.Controller.Request
+namespace UserService.Controller.Request
 {
     public class LoginRequest
     {

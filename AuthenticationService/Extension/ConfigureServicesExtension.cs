@@ -3,16 +3,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using AuthenticationService.Model;
+using UserService.Domain.Authentication;
 
-namespace NetFirstDemo.Extension
+namespace UserService.Extension
 {
     public static class ConfigureServicesExtension
     {
         public static IServiceCollection AddTokenConfiguration(
             this IServiceCollection services, IConfiguration configuration)
         {
-            TokenConfig tokenManagement = configuration.GetSection("Token").Get<TokenConfig>();
+            TokenManager tokenManagement = configuration.GetSection("Token").Get<TokenManager>();
             services.AddAuthentication(auth =>
             {
                 auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -1,24 +1,23 @@
-﻿using System;
-using AuthenticationService.Controller.Request;
-using AuthenticationService.Model;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using NetFirstDemo.Service.authentication;
+using UserService.Controller.Request;
+using UserService.Domain.Authentication;
+using UserService.Service.Authentication;
 
-namespace AuthenticationService.Controller
+namespace UserService.Controller
 {
     [ApiController]
     [Route("api")]
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationService authenticationService;
-        private readonly TokenConfig tokenConfig;
+        private readonly TokenManager tokenConfig;
 
         public AuthenticationController(
             IAuthenticationService authenticationService, IConfiguration configuration)
         {
             this.authenticationService = authenticationService;
-            this.tokenConfig = configuration.GetSection("Token").Get<TokenConfig>();
+            this.tokenConfig = configuration.GetSection("Token").Get<TokenManager>();
         }
 
         [HttpPost]
