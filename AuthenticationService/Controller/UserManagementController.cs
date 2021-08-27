@@ -74,7 +74,7 @@ namespace UserService.Controller
         [HttpPost]
         [Route("{username}")]
         public async Task<ActionResult> AssignRoles(
-            string username, [FromBody] List<CreateRoleRequest> requests)
+            string username, [FromBody] List<RoleChangeRequest> requests)
         {
             List<RoleName> roleNames = new();
             requests.ForEach(request =>
@@ -92,6 +92,13 @@ namespace UserService.Controller
             });
             await userManagementService.AssignRoleToUser(username, roleNames);
             return NoContent();
+        }
+
+        [HttpPatch]
+        [Route("{username}")]
+        public async Task<ActionResult> EditRoles(string username, [FromBody] List<RoleChangeRequest> requests)
+        {
+
         }
     }
 }

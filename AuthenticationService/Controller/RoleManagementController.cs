@@ -48,7 +48,7 @@ namespace UserService.Controller
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateRole([FromBody] CreateRoleRequest request)
+        public async Task<ActionResult> CreateRole([FromBody] RoleChangeRequest request)
         {
             try
             {

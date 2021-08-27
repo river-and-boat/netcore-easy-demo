@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using UserService.Common;
 
 namespace UserService.Controller.Request
 {
-    public class CreateRoleRequest
+    public class RoleChangeRequest
     {
         [Required]
         public string Name { get; set; }

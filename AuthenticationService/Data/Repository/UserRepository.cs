@@ -66,17 +66,6 @@ namespace UserService.Data.Repository
             await context.SaveChangesAsync();
         }
 
-        public async Task AssignRoleToUser(User user, List<Role> roles)
-        {
-            List<UserRole> userRoles = new();
-            roles.ForEach(role =>
-            {
-                userRoles.Add(new UserRole() { User = user, Role = role });
-            });
-            await context.UserRole.AddRangeAsync(userRoles);
-            await context.SaveChangesAsync();
-        }
-
         public Task UpdateUserInfoAsync(User user)
         {
             throw new System.NotImplementedException();
