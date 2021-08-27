@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{9362E85C-C436-49C2-BD06-B14B3595D7B7}|AuthenticationService">
   <MonoDevelop.Ide.ItemProperties.APIGatewayService FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.PlanService FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Common/RoleName.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Controller/UserManagementController.cs">
     <Files>
       <File FileName="AuthenticationService/Domain/User.cs" Line="31" Column="36" />
       <File FileName="AuthenticationService/Data/Repository/IRoleRepository.cs" Line="18" Column="1" />
-      <File FileName="AuthenticationService/Controller/UserManagementController.cs" Line="86" Column="18" />
+      <File FileName="AuthenticationService/Controller/UserManagementController.cs" Line="18" Column="61" />
       <File FileName="AuthenticationService/Data/Repository/RoleRepository.cs" Line="19" Column="42" />
       <File FileName="AuthenticationService/Service/User/UserManagementService.cs" Line="29" Column="56" />
       <File FileName="AuthenticationService/Controller/Request/RoleChangeRequest.cs" />
@@ -14,16 +14,13 @@
       <File FileName="AuthenticationService/Data/Repository/IUserRepository.cs" Line="18" Column="1" />
       <File FileName="AuthenticationService/Program.cs" Line="16" Column="18" />
       <File FileName="AuthenticationService/Startup.cs" Line="43" Column="1" />
-      <File FileName="AuthenticationService/Common/RoleName.cs" Line="4" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NetFirstDemo" expanded="True">
             <Node name="UserService" expanded="True">
-              <Node name="Common" expanded="True">
-                <Node name="RoleName.cs" selected="True" />
-              </Node>
+              <Node name="Controller" selected="True" />
               <Node name="Service" expanded="True">
                 <Node name="User" expanded="True" />
               </Node>
