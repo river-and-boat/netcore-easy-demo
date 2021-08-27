@@ -58,7 +58,7 @@ namespace UserService.Controller
                 return BadRequest();
             }
             User user = await userManagementService.CreateUser(request);
-            return CreatedAtAction(nameof(GetUserByUsername), new { username = user.Name, user });
+            return CreatedAtAction(nameof(GetUserByUsername), new { username = user.Name }, user);
         }
     }
 }

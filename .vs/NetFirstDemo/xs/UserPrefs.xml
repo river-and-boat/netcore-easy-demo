@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{9362E85C-C436-49C2-BD06-B14B3595D7B7}|AuthenticationService">
   <MonoDevelop.Ide.ItemProperties.APIGatewayService FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.PlanService FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Service/User/UserManagementService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Controller/UserManagementController.cs">
     <Files>
-      <File FileName="AuthenticationService/Controller/UserManagementController.cs" Line="60" Column="1" />
-      <File FileName="AuthenticationService/Data/Repository/UserRepository.cs" Line="44" Column="33" />
-      <File FileName="AuthenticationService/Service/User/UserManagementService.cs" Line="61" Column="43" />
+      <File FileName="AuthenticationService/Controller/UserManagementController.cs" Line="55" Column="10" />
+      <File FileName="AuthenticationService/Data/Repository/UserRepository.cs" Line="33" Column="32" />
+      <File FileName="AuthenticationService/Service/User/UserManagementService.cs" Line="13" Column="56" />
       <File FileName="AuthenticationService/Controller/Request/CreateUserRequest.cs" Line="9" Column="19" />
       <File FileName="AuthenticationService/Controller/Request/LoginRequest.cs" Line="1" Column="1" />
       <File FileName="AuthenticationService/Controller/AuthenticationController.cs" Line="10" Column="19" />
@@ -20,23 +20,24 @@
       <File FileName="AuthenticationService/Data/Model/User.cs" Line="44" Column="1" />
       <File FileName="AuthenticationService/Data/Model/Role.cs" Line="23" Column="1" />
       <File FileName="AuthenticationService/Exception/GlobalExceptionMessage.cs" Line="10" Column="58" />
+      <File FileName="AuthenticationService/Data/Repository/RoleRepository.cs" Line="13" Column="1" />
+      <File FileName="AuthenticationService/Utils/UserMapper.cs" Line="19" Column="34" />
+      <File FileName="AuthenticationService/Startup.cs" Line="31" Column="61" />
+      <File FileName="AuthenticationService/Data/Repository/IRoleRepository.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NetFirstDemo" expanded="True">
             <Node name="UserService" expanded="True">
-              <Node name="Controller" expanded="True" />
+              <Node name="Controller" expanded="True">
+                <Node name="UserManagementController.cs" selected="True" />
+              </Node>
               <Node name="Data" expanded="True">
                 <Node name="Model" expanded="True" />
                 <Node name="Repository" expanded="True" />
               </Node>
-              <Node name="Domain" expanded="True" />
-              <Node name="Exception" expanded="True" />
-              <Node name="Service" expanded="True">
-                <Node name="User" expanded="True" />
-              </Node>
-              <Node name="Utils" expanded="True" />
+              <Node name="Service" expanded="True" />
             </Node>
           </Node>
         </State>

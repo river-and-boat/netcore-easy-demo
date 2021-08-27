@@ -29,11 +29,13 @@ namespace AuthenticationService
             services.AddControllers(option =>
             {
                 option.Filters.Add<ResponseWrapperFilter>();
-            }).AddNewtonsoftJson(option => {
+            }).AddNewtonsoftJson(option =>
+            {
                 option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
             services.AddScoped<IAuthenticationService, JwtAuthenticationService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<UserManagementService>();
         }
 

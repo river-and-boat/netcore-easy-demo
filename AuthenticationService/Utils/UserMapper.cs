@@ -5,28 +5,6 @@ namespace UserService.Utils
 {
     public static class UserMapper
     {
-        public static User MapDomainUserToDataUser(Domain.User domainUser)
-        {
-            List<UserRole> userRoles = new();
-            User user = new User()
-            {
-                Name = domainUser.Name,
-                Password = domainUser.Password,
-                Address = domainUser.Address,
-                Country = domainUser.Country,
-                Mobile = domainUser.Mobile,
-                Email = domainUser.Email,
-                Locked = domainUser.Locked,
-                Roles = userRoles
-            };
-            domainUser.Roles.ForEach(roleName =>
-            {
-                Role role = new Role() { Name = roleName, Users = userRoles };
-                userRoles.Add(new UserRole() { User = user, Role = role });
-            });
-            return user;
-        }
-
         public static Domain.User MapDataUserToDomainUser(User user)
         {
             if (user == null)

@@ -11,10 +11,13 @@ namespace UserService.Service
     public class UserManagementService
     {
         private readonly IUserRepository userRepository;
+        private readonly IRoleRepository roleRepository;
 
-        public UserManagementService(IUserRepository userRepository)
+        public UserManagementService(
+            IUserRepository userRepository, IRoleRepository roleRepository)
         {
             this.userRepository = userRepository;
+            this.roleRepository = roleRepository;
         }
 
         public async Task<User> GetUserByUsernameAsync(string username)
@@ -45,7 +48,17 @@ namespace UserService.Service
 
         public async Task<User> CreateUser(CreateUserRequest request)
         {
-            User user = new User()
+            if (await userRepository.ExistUserAsync(request.Name))
+            {
+                throw new GlobalException(
+                    GlobalExceptionMessage.USER_HAS_EXIST,
+                    GlobalExceptionCode.USER_HAS_EXIST,
+                    GlobalStatusCode.BAD_REQUEST
+                );
+            }
+            List<Data.Model.Role> roles = await roleRepository.GetRolesByRoleNames(request.Roles);
+            List<Data.Model.UserRole> userRoles = new();
+            Data.Model.User user = new Data.Model.User()
             {
                 Name = request.Name,
                 Password = request.Password,
@@ -54,12 +67,15 @@ namespace UserService.Service
                 Email = request.Email,
                 Mobile = request.Mobile,
                 Locked = true,
-                Roles = request.Roles
+                Roles = userRoles
             };
+            roles.ForEach(role =>
+            {
+                userRoles.Add(new Data.Model.UserRole() { Role = role, User = user });
+            });
 
             return UserMapper.MapDataUserToDomainUser(
-                await userRepository.CreateUserAsync(
-                    UserMapper.MapDomainUserToDataUser(user)));
+                await userRepository.CreateUserAsync(user));
         }
     }
 }
