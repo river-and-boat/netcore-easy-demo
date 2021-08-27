@@ -60,9 +60,10 @@ namespace UserService.Data.Repository
             await context.SaveChangesAsync();
         }
 
-        public Task DeleteUserByUsernameAsync(string username)
+        public async Task DeleteUserByUsernameAsync(User user)
         {
-            throw new System.NotImplementedException();
+            context.Remove(user);
+            await context.SaveChangesAsync();
         }
 
         public Task UpdateUserInfoAsync(User user)

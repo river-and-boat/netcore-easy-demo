@@ -14,7 +14,7 @@ namespace UserService.Data.Repository
 
         public Task<User> CreateUserAsync(User user);
 
-        public Task DeleteUserByUsernameAsync(string username);
+        public Task DeleteUserByUsernameAsync(User user);
 
         public Task UpdateUserInfoAsync(User user);
 

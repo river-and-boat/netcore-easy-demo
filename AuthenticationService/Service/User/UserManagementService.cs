@@ -77,5 +77,19 @@ namespace UserService.Service
             return UserMapper.MapDataUserToDomainUser(
                 await userRepository.CreateUserAsync(user));
         }
+
+        public async Task DeleteUser(string username)
+        {
+            Data.Model.User user = await userRepository.FindUserByUsernameAsync(username);
+            if (user != null)
+            {
+                await userRepository.DeleteUserByUsernameAsync(user);
+            }
+            throw new GlobalException(
+                GlobalExceptionMessage.USER_NAME_NOT_EXIST,
+                GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
+                GlobalStatusCode.BAD_REQUEST
+            );
+        }
     }
 }

@@ -60,5 +60,13 @@ namespace UserService.Controller
             User user = await userManagementService.CreateUser(request);
             return CreatedAtAction(nameof(GetUserByUsername), new { username = user.Name }, user);
         }
+
+        [HttpDelete]
+        [Route("{username}")]
+        public async Task<ActionResult> DeleteUser(string username)
+        {
+            await userManagementService.DeleteUser(username);
+            return NoContent();
+        }
     }
 }
