@@ -66,9 +66,10 @@ namespace UserService.Data.Repository
             await context.SaveChangesAsync();
         }
 
-        public Task UpdateUserInfoAsync(User user)
+        public async Task UpdateUserAsync(User user)
         {
-            throw new System.NotImplementedException();
+            context.User.Update(user);
+            await context.SaveChangesAsync();
         }
     }
 }

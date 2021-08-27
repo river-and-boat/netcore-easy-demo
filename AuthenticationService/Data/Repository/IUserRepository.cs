@@ -16,7 +16,7 @@ namespace UserService.Data.Repository
 
         public Task DeleteUserByUsernameAsync(User user);
 
-        public Task UpdateUserInfoAsync(User user);
+        public Task UpdateUserAsync(User user);
 
         public Task LockUserAsync(User user);
     }

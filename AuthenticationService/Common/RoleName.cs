@@ -2,6 +2,9 @@
 {
     public enum RoleName
     {
-        ADMIN, USER, CUSTOMER
+        ROOT,
+        ADMIN,
+        USER,
+        CUSTOMER
     }
 }

@@ -36,7 +36,7 @@ namespace UserService.Controller
         }
 
         [HttpPatch]
-        [Route("{username}")]
+        [Route("{username}/lock")]
         public async Task<ActionResult> LockUser(string username)
         {
             string loginUsername = User.FindFirstValue(ClaimTypes.Name);
@@ -72,7 +72,7 @@ namespace UserService.Controller
         }
 
         [HttpPost]
-        [Route("{username}")]
+        [Route("{username}/roles")]
         public async Task<ActionResult> AssignRoles(
             string username, [FromBody] List<RoleChangeRequest> requests)
         {
@@ -90,15 +90,8 @@ namespace UserService.Controller
                     Console.WriteLine("The given role is not exist: " + ex.Message);
                 }
             });
-            await userManagementService.AssignRoleToUser(username, roleNames);
+            await userManagementService.AssignRoles(username, roleNames);
             return NoContent();
-        }
-
-        [HttpPatch]
-        [Route("{username}")]
-        public async Task<ActionResult> EditRoles(string username, [FromBody] List<RoleChangeRequest> requests)
-        {
-
         }
     }
 }

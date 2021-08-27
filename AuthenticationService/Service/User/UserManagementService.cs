@@ -90,5 +90,26 @@ namespace UserService.Service
             }
             await userRepository.DeleteUserByUsernameAsync(user);
         }
+
+        public async Task AssignRoles(string username, List<RoleName> roleNames)
+        {
+            Data.Model.User user = await userRepository.FindUserByUsernameAsync(username);
+            if (user == null)
+            {
+                throw new GlobalException(
+                    GlobalExceptionMessage.USER_NAME_NOT_EXIST,
+                    GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
+                    GlobalStatusCode.BAD_REQUEST
+                );
+            }
+            List<Role> roles = await roleRepository.FindRolesByRoleNamesAsync(roleNames);
+            List<UserRole> userRoles = new();
+            roles.ForEach(role =>
+            {
+                userRoles.Add(new UserRole() { User = user, Role = role });
+            });
+            user.Roles = userRoles;
+            await userRepository.UpdateUserAsync(user);
+        }
     }
 }
