@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using UserService.Common;
 
 namespace UserService.Controller.Request
 {
@@ -18,7 +19,7 @@ namespace UserService.Controller.Request
         public string Mobile { get; set; }
         [Required]
         public string Email { get; set; }
-        public List<string> Roles { get; set; }
+        public List<RoleName> Roles { get; set; }
 
         public CreateUserRequest()
         {

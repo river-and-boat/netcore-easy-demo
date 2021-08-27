@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using UserService.Common;
 using UserService.Data.Model;
 
 namespace UserService.Data.Repository
@@ -16,7 +17,7 @@ namespace UserService.Data.Repository
             this.context = context;
         }
 
-        public async Task<List<Role>> GetRolesByRoleNames(List<string> roleNames)
+        public async Task<List<Role>> GetRolesByRoleNames(List<RoleName> roleNames)
         {
             return await context
                 .Role

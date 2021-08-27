@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using UserService.Common;
 using UserService.Data.Model;
 
 namespace UserService.Data
@@ -25,6 +27,10 @@ namespace UserService.Data
                 .HasOne(manager => manager.Role)
                 .WithMany(role => role.Users)
                 .HasForeignKey(manager => manager.RoleId);
+
+            builder.Entity<Role>()
+                .Property(prop => prop.Name)
+                .HasConversion(new EnumToStringConverter<RoleName>());
         }
 
         public virtual DbSet<User> User { get; set; }

@@ -4,7 +4,7 @@ using UserService.Controller.Request;
 using UserService.Data.Repository;
 using UserService.Domain;
 using UserService.Exception;
-using UserService.Utils;
+using UserService.Common;
 
 namespace UserService.Service
 {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using UserService.Common;
 
 namespace UserService.Data.Model
 {
@@ -13,7 +14,7 @@ namespace UserService.Data.Model
 
         [Required]
         [MaxLength(20)]
-        public string Name { get; set; }
+        public RoleName Name { get; set; }
 
         public List<UserRole> Users { get; set; }
 

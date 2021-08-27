@@ -1,42 +1,53 @@
 ﻿<Properties StartupConfiguration="{9362E85C-C436-49C2-BD06-B14B3595D7B7}|AuthenticationService">
   <MonoDevelop.Ide.ItemProperties.APIGatewayService FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.PlanService FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Service/User/UserManagementService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Filter/ResponseWrapperFilter.cs">
     <Files>
       <File FileName="AuthenticationService/Controller/Request/LoginRequest.cs" Line="1" Column="1" IsPinned="True" />
       <File FileName="AuthenticationService/Controller/AuthenticationController.cs" Line="10" Column="19" />
-      <File FileName="AuthenticationService/Data/Repository/IUserRepository.cs" Line="17" Column="58" />
+      <File FileName="AuthenticationService/Data/Repository/IUserRepository.cs" Line="11" Column="33" />
       <File FileName="AuthenticationService/Controller/Response/CommonResponse.cs" />
       <File FileName="AuthenticationService/Exception/GlobalException.cs" Line="11" Column="16" />
       <File FileName="AuthenticationService/Exception/GlobalStatusCode.cs" Line="1" Column="1" />
       <File FileName="AuthenticationService/Exception/GlobalExceptionCode.cs" Line="13" Column="1" />
-      <File FileName="AuthenticationService/Domain/User.cs" Line="17" Column="1" />
-      <File FileName="AuthenticationService/Data/Model/UserRole.cs" Line="12" Column="39" />
-      <File FileName="AuthenticationService/Data/Model/User.cs" Line="44" Column="1" />
-      <File FileName="AuthenticationService/Data/Model/Role.cs" Line="23" Column="1" />
-      <File FileName="AuthenticationService/Data/Repository/RoleRepository.cs" Line="13" Column="1" />
+      <File FileName="AuthenticationService/Domain/User.cs" Line="8" Column="18" />
+      <File FileName="AuthenticationService/Data/Model/UserRole.cs" Line="14" Column="18" />
+      <File FileName="AuthenticationService/Data/Model/Role.cs" Line="13" Column="36" />
+      <File FileName="AuthenticationService/Data/Repository/RoleRepository.cs" Line="20" Column="79" />
       <File FileName="AuthenticationService/Startup.cs" Line="31" Column="61" />
-      <File FileName="AuthenticationService/Data/Repository/IRoleRepository.cs" Line="1" Column="1" />
-      <File FileName="AuthenticationService/Data/UserRoleDbContext.cs" Line="21" Column="46" />
-      <File FileName="AuthenticationService/Controller/UserManagementController.cs" Line="68" Column="1" />
-      <File FileName="AuthenticationService/Data/Repository/UserRepository.cs" Line="15" Column="36" />
-      <File FileName="AuthenticationService/Service/User/UserManagementService.cs" Line="1" Column="1" />
+      <File FileName="AuthenticationService/Data/Repository/IRoleRepository.cs" Line="10" Column="66" />
+      <File FileName="AuthenticationService/Data/UserRoleDbContext.cs" Line="19" Column="76" />
+      <File FileName="AuthenticationService/Controller/UserManagementController.cs" Line="30" Column="18" />
+      <File FileName="AuthenticationService/Data/Repository/UserRepository.cs" Line="27" Column="30" />
+      <File FileName="AuthenticationService/Service/User/UserManagementService.cs" Line="31" Column="44" />
+      <File FileName="AuthenticationService/Utils/UserMapper.cs" Line="16" Column="37" />
+      <File FileName="AuthenticationService/Domain/Role.cs" Line="7" Column="10" />
+      <File FileName="AuthenticationService/Domain/Token.cs" Line="39" Column="10" />
+      <File FileName="AuthenticationService/Controller/Request/CreateUserRequest.cs" Line="12" Column="19" />
+      <File FileName="AuthenticationService/Service/Authentication/JwtAuthenticationService.cs" Line="29" Column="47" />
+      <File FileName="AuthenticationService/Common/RoleName.cs" Line="1" Column="1" />
+      <File FileName="AuthenticationService/appsettings.json" Line="1" Column="1" />
+      <File FileName="AuthenticationService/Data/Model/User.cs" Line="38" Column="27" />
+      <File FileName="AuthenticationService/Filter/ResponseWrapperFilter.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NetFirstDemo" expanded="True">
             <Node name="UserService" expanded="True">
+              <Node name="Common" expanded="True" />
               <Node name="Controller" expanded="True" />
               <Node name="Data" expanded="True">
                 <Node name="Repository" expanded="True" />
               </Node>
-              <Node name="Service" expanded="True">
-                <Node name="User" expanded="True">
-                  <Node name="UserManagementService.cs" selected="True" />
-                </Node>
+              <Node name="Domain" expanded="True" />
+              <Node name="Filter" expanded="True">
+                <Node name="ResponseWrapperFilter.cs" selected="True" />
               </Node>
-              <Node name="Utils" expanded="True" />
+              <Node name="Service" expanded="True">
+                <Node name="Authentication" expanded="True" />
+                <Node name="User" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>

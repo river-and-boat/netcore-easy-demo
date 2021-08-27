@@ -1,5 +1,4 @@
-﻿using System;
-namespace UserService.Domain
+﻿namespace UserService.Domain
 {
     public class Role
     {

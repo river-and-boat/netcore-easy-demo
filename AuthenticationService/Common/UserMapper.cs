@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UserService.Data.Model;
 
-namespace UserService.Utils
+namespace UserService.Common
 {
     public static class UserMapper
     {
@@ -12,7 +12,7 @@ namespace UserService.Utils
                 return null;
             }
             List<string> roles = new();
-            user.Roles.ForEach(role => roles.Add(role.Role.Name));
+            user.Roles.ForEach(role => roles.Add(role.Role.Name.ToString()));
             return new Domain.User()
             {
                 Id = user.Id,
