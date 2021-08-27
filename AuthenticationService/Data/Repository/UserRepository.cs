@@ -17,10 +17,11 @@ namespace UserService.Data.Repository
 
         public async Task<List<User>> FindUserListAsync()
         {
-            return await context.User
+            return await context
+                .User
+                .AsNoTracking()
                 .Include(userRole => userRole.Roles)
                 .ThenInclude(role => role.Role)
-                .AsNoTracking()
                 .ToListAsync();
         }
 
@@ -30,7 +31,6 @@ namespace UserService.Data.Repository
                 .User
                 .Include(userRole => userRole.Roles)
                 .ThenInclude(role => role.Role)
-                .AsNoTracking()
                 .FirstOrDefaultAsync(user => user.Name == username);
         }
 
@@ -63,6 +63,17 @@ namespace UserService.Data.Repository
         public async Task DeleteUserByUsernameAsync(User user)
         {
             context.Remove(user);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task AssignRoleToUser(User user, List<Role> roles)
+        {
+            List<UserRole> userRoles = new();
+            roles.ForEach(role =>
+            {
+                userRoles.Add(new UserRole() { User = user, Role = role });
+            });
+            await context.UserRole.AddRangeAsync(userRoles);
             await context.SaveChangesAsync();
         }
 

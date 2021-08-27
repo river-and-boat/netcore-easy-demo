@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UserService.Exception;
 
 namespace UserService.Domain

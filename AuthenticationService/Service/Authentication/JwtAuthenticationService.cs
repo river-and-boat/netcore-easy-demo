@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using UserService.Controller.Request;
-using UserService.Domain;
 using UserService.Exception;
 
 namespace UserService.Service.Authentication
@@ -9,18 +8,18 @@ namespace UserService.Service.Authentication
     public class JwtAuthenticationService : IAuthenticationService
     {
         private readonly UserManagementService userManagementService;
-        private readonly Token token;
+        private readonly Domain.Token token;
 
         public JwtAuthenticationService(
             UserManagementService userManagementService, IConfiguration configuration)
         {
             this.userManagementService = userManagementService;
-            token = configuration.GetSection("Token").Get<Token>();
+            token = configuration.GetSection("Token").Get<Domain.Token>();
         }
 
         public async Task<string> GenerateToken(LoginRequest request)
         {
-            User user = await userManagementService.GetUserByUsernameAsync(request.Username);
+            Domain.User user = await userManagementService.GetUserByUsernameAsync(request.Username);
             if (user != null)
             {
                 user.AssertUsernamePasswordMatched(request.Password);

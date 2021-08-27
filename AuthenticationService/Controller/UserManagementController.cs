@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using UserService.Common;
 using UserService.Controller.Request;
 using UserService.Domain;
 using UserService.Exception;
@@ -66,6 +68,29 @@ namespace UserService.Controller
         public async Task<ActionResult> DeleteUser(string username)
         {
             await userManagementService.DeleteUser(username);
+            return NoContent();
+        }
+
+        [HttpPost]
+        [Route("{username}")]
+        public async Task<ActionResult> AssignRoles(
+            string username, [FromBody] List<CreateRoleRequest> requests)
+        {
+            List<RoleName> roleNames = new();
+            requests.ForEach(request =>
+            {
+                try
+                {
+                    RoleName name = (RoleName)Enum.Parse(typeof(RoleName), request.Name.ToUpper());
+                    roleNames.Add(name);
+                }
+                catch (System.Exception ex)
+                {
+                    // todo log
+                    Console.WriteLine("The given role is not exist: " + ex.Message);
+                }
+            });
+            await userManagementService.AssignRoleToUser(username, roleNames);
             return NoContent();
         }
     }

@@ -19,5 +19,7 @@ namespace UserService.Data.Repository
         public Task UpdateUserInfoAsync(User user);
 
         public Task LockUserAsync(User user);
+
+        public Task AssignRoleToUser(User user, List<Role> roles);
     }
 }

@@ -9,6 +9,7 @@ using UserService.Filter;
 using UserService.Middleware;
 using UserService.Service;
 using UserService.Service.Authentication;
+using UserService.Service.User;
 
 namespace AuthenticationService
 {
@@ -37,6 +38,7 @@ namespace AuthenticationService
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<UserManagementService>();
+            services.AddScoped<RoleManagementService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

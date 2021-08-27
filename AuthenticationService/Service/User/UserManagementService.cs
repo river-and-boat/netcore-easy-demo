@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using UserService.Controller.Request;
 using UserService.Data.Repository;
-using UserService.Domain;
 using UserService.Exception;
 using UserService.Common;
+using UserService.Data.Model;
 
 namespace UserService.Service
 {
@@ -20,13 +20,13 @@ namespace UserService.Service
             this.roleRepository = roleRepository;
         }
 
-        public async Task<User> GetUserByUsernameAsync(string username)
+        public async Task<Domain.User> GetUserByUsernameAsync(string username)
         {
             return UserMapper.MapDataUserToDomainUser(
                 await userRepository.FindUserByUsernameAsync(username));
         }
 
-        public async Task<List<User>> GetUserListAsync()
+        public async Task<List<Domain.User>> GetUserListAsync()
         {
             return UserMapper.MapDataUsersToDomainUsers(
                 await userRepository.FindUserListAsync());
@@ -35,18 +35,18 @@ namespace UserService.Service
         public async Task LockUserAsync(string username)
         {
             Data.Model.User user = await userRepository.FindUserByUsernameAsync(username);
-            if (user != null)
+            if (user == null)
             {
-                await userRepository.LockUserAsync(user);
+                throw new GlobalException(
+                    GlobalExceptionMessage.USER_NAME_NOT_EXIST,
+                    GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
+                    GlobalStatusCode.BAD_REQUEST
+                );
             }
-            throw new GlobalException(
-                GlobalExceptionMessage.USER_NAME_NOT_EXIST,
-                GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
-                GlobalStatusCode.BAD_REQUEST
-            );
+            await userRepository.LockUserAsync(user);
         }
 
-        public async Task<User> CreateUser(CreateUserRequest request)
+        public async Task<Domain.User> CreateUser(CreateUserRequest request)
         {
             if (await userRepository.ExistUserAsync(request.Name))
             {
@@ -56,8 +56,8 @@ namespace UserService.Service
                     GlobalStatusCode.BAD_REQUEST
                 );
             }
-            List<Data.Model.Role> roles = await roleRepository.GetRolesByRoleNames(request.Roles);
-            List<Data.Model.UserRole> userRoles = new();
+            List<Role> roles = await roleRepository.FindRolesByRoleNamesAsync(request.Roles);
+            List<UserRole> userRoles = new();
             Data.Model.User user = new Data.Model.User()
             {
                 Name = request.Name,
@@ -71,9 +71,8 @@ namespace UserService.Service
             };
             roles.ForEach(role =>
             {
-                userRoles.Add(new Data.Model.UserRole() { Role = role, User = user });
+                userRoles.Add(new UserRole() { Role = role, User = user });
             });
-
             return UserMapper.MapDataUserToDomainUser(
                 await userRepository.CreateUserAsync(user));
         }
@@ -81,15 +80,37 @@ namespace UserService.Service
         public async Task DeleteUser(string username)
         {
             Data.Model.User user = await userRepository.FindUserByUsernameAsync(username);
-            if (user != null)
+            if (user == null)
             {
-                await userRepository.DeleteUserByUsernameAsync(user);
+                throw new GlobalException(
+                    GlobalExceptionMessage.USER_NAME_NOT_EXIST,
+                    GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
+                    GlobalStatusCode.BAD_REQUEST
+                );
             }
-            throw new GlobalException(
-                GlobalExceptionMessage.USER_NAME_NOT_EXIST,
-                GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
-                GlobalStatusCode.BAD_REQUEST
-            );
+            await userRepository.DeleteUserByUsernameAsync(user);
+        }
+
+        public async Task AssignRoleToUser(string username, List<RoleName> roleNames)
+        {
+            Data.Model.User user = await userRepository.FindUserByUsernameAsync(username);
+            if (user == null)
+            {
+                throw new GlobalException(
+                    GlobalExceptionMessage.USER_NAME_NOT_EXIST,
+                    GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
+                    GlobalStatusCode.BAD_REQUEST
+                );
+            }            
+            user.Roles.ForEach(role =>
+            {
+                if (roleNames.Contains(role.Role.Name))
+                {
+                    roleNames.Remove(role.Role.Name);
+                }
+            });
+            var roles = await roleRepository.FindRolesByRoleNamesAsync(roleNames);
+            await userRepository.AssignRoleToUser(user, roles);
         }
     }
 }

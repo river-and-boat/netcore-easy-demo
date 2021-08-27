@@ -2,8 +2,6 @@
 {
     public class Role
     {
-        public Role()
-        {
-        }
+        public string Name { get; set; }
     }
 }
