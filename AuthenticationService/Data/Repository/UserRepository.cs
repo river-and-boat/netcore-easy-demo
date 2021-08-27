@@ -20,6 +20,7 @@ namespace UserService.Data.Repository
             return await context.User
                 .Include(userRole => userRole.Roles)
                 .ThenInclude(role => role.Role)
+                .AsNoTracking()
                 .ToListAsync();
         }
 
@@ -31,6 +32,13 @@ namespace UserService.Data.Repository
                 .ThenInclude(role => role.Role)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(user => user.Name == username);
+        }
+
+        public async Task<bool> ExistUserAsync(string username)
+        {
+            return await context
+                .User
+                .AnyAsync(user => user.Name == username);
         }
 
         public async Task<User> CreateUserAsync(User user)
@@ -45,12 +53,14 @@ namespace UserService.Data.Repository
                 );
         }
 
-        public Task DeleteUserByUsernameAsync(string username)
+        public async Task LockUserAsync(User user)
         {
-            throw new System.NotImplementedException();
+            user.Locked = true;
+            context.Update(user);
+            await context.SaveChangesAsync();
         }
 
-        public Task LockUserByUsernameAsync(string username)
+        public Task DeleteUserByUsernameAsync(string username)
         {
             throw new System.NotImplementedException();
         }
