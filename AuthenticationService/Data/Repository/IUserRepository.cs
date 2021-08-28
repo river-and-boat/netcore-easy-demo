@@ -8,7 +8,9 @@ namespace UserService.Data.Repository
     {
         public Task<bool> ExistUserAsync(string username);
 
-        public Task<List<User>> FindUserListAsync();
+        public Task<List<User>> FindUsersAsync();
+
+        public Task<List<User>> FindLockUsers();
 
         public Task<User> FindUserByUsernameAsync(string username);
 
@@ -19,5 +21,7 @@ namespace UserService.Data.Repository
         public Task UpdateUserAsync(User user);
 
         public Task LockUserAsync(User user);
+
+        public Task UnLockUserAsync(User user);
     }
 }

@@ -27,17 +27,24 @@ namespace UserService.Controller
         }
 
         [HttpGet]
+        public async Task<ActionResult<List<User>>> GetUsers()
+        {
+            return Ok(await userManagementService.GetUsersAsync());
+        }
+
+        [HttpGet]
+        [Route("lock")]
+        public async Task<ActionResult<List<User>>> GetLockedUsers()
+        {
+            return Ok(await userManagementService.GetLockedUsersAsync());
+        }
+
+        [HttpGet]
         [Route("{username}")]
         public async Task<ActionResult<User>> GetUserByUsername(string username)
         {
             logger.LogInformation("select user by name: {0}", username);
             return Ok(await userManagementService.GetUserByUsernameAsync(username));
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<List<User>>> GetUserList()
-        {
-            return Ok(await userManagementService.GetUserListAsync());
         }
 
         [HttpPatch]
@@ -54,6 +61,24 @@ namespace UserService.Controller
             throw new GlobalException(
                 GlobalExceptionMessage.USER_LOCK_SELF_ERROR,
                 GlobalExceptionCode.USER_LOCKED_CODE,
+                GlobalStatusCode.BAD_REQUEST
+            );
+        }
+
+        [HttpPatch]
+        [Route("{username}/unlock")]
+        public async Task<ActionResult> UnLockUser(string username)
+        {
+            logger.LogInformation("unlock the user: {0}", username);
+            string loginUsername = User.FindFirstValue(ClaimTypes.Name);
+            if (loginUsername != null && !username.Equals(loginUsername))
+            {
+                await userManagementService.UnLockUserAsync(username);
+                return NoContent();
+            }
+            throw new GlobalException(
+                GlobalExceptionMessage.USER_UNLOCK_SELF_ERROR,
+                GlobalExceptionCode.USER_UNLOCK_SELF_CODE,
                 GlobalStatusCode.BAD_REQUEST
             );
         }

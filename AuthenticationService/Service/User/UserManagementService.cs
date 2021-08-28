@@ -26,10 +26,16 @@ namespace UserService.Service
                 await userRepository.FindUserByUsernameAsync(username));
         }
 
-        public async Task<List<Domain.User>> GetUserListAsync()
+        public async Task<List<Domain.User>> GetUsersAsync()
         {
             return UserMapper.MapDataUsersToDomainUsers(
-                await userRepository.FindUserListAsync());
+                await userRepository.FindUsersAsync());
+        }
+
+        public async Task<List<Domain.User>> GetLockedUsersAsync()
+        {
+            return UserMapper.MapDataUsersToDomainUsers(
+                await userRepository.FindLockUsers());
         }
 
         public async Task LockUserAsync(string username)
@@ -46,6 +52,20 @@ namespace UserService.Service
             await userRepository.LockUserAsync(user);
         }
 
+        public async Task UnLockUserAsync(string username)
+        {
+            Data.Model.User user = await userRepository.FindUserByUsernameAsync(username);
+            if (user == null)
+            {
+                throw new GlobalException(
+                    GlobalExceptionMessage.USER_NAME_NOT_EXIST,
+                    GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
+                    GlobalStatusCode.BAD_REQUEST
+                );
+            }
+            await userRepository.UnLockUserAsync(user);
+        }
+
         public async Task<Domain.User> CreateUser(CreateUserRequest request)
         {
             if (await userRepository.ExistUserAsync(request.Name))
@@ -56,7 +76,7 @@ namespace UserService.Service
                     GlobalStatusCode.BAD_REQUEST
                 );
             }
-            List<Role> roles = await roleRepository.FindRolesByRoleNamesAsync(request.Roles);
+            Role role = await roleRepository.FindRoleByRoleNameAsync(RoleName.CUSTOMER);
             List<UserRole> userRoles = new();
             Data.Model.User user = new Data.Model.User()
             {
@@ -69,10 +89,14 @@ namespace UserService.Service
                 Locked = true,
                 Roles = userRoles
             };
-            roles.ForEach(role =>
+            if (role != null)
             {
                 userRoles.Add(new UserRole() { Role = role, User = user });
-            });
+            }
+            else
+            {
+                userRoles.Add(new UserRole() { Role = new Role() { Name = RoleName.CUSTOMER }, User = user });
+            }
             return UserMapper.MapDataUserToDomainUser(
                 await userRepository.CreateUserAsync(user));
         }

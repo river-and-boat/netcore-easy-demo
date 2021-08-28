@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UserService.Data.Model;
@@ -15,13 +16,22 @@ namespace UserService.Data.Repository
             this.context = context;
         }
 
-        public async Task<List<User>> FindUserListAsync()
+        public async Task<List<User>> FindUsersAsync()
         {
             return await context
                 .User
                 .AsNoTracking()
                 .Include(userRole => userRole.Roles)
                 .ThenInclude(role => role.Role)
+                .ToListAsync();
+        }
+
+        public async Task<List<User>> FindLockUsers()
+        {
+            return await context
+                .User
+                .AsNoTracking()
+                .Where(user => user.Locked == true)
                 .ToListAsync();
         }
 
@@ -56,6 +66,13 @@ namespace UserService.Data.Repository
         public async Task LockUserAsync(User user)
         {
             user.Locked = true;
+            context.Update(user);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task UnLockUserAsync(User user)
+        {
+            user.Locked = false;
             context.Update(user);
             await context.SaveChangesAsync();
         }

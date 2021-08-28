@@ -7,6 +7,7 @@
         public static readonly string USER_NAME_NOT_EXIST= "The given username is not exist";
         public static readonly string USER_CREATE_ERROR = "Create user error";
         public static readonly string USER_LOCK_SELF_ERROR = "You can not lock yourself";
+        public static readonly string USER_UNLOCK_SELF_ERROR = "You can not unlock yourself";
         public static readonly string USER_HAS_EXIST = "The given user has exist";
 
         public static readonly string ROLE_HAS_EXIST = "The given role has exist";

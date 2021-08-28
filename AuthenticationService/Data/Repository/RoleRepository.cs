@@ -20,7 +20,6 @@ namespace UserService.Data.Repository
         {
             return await context
                 .Role
-                .AsNoTracking()
                 .FirstOrDefaultAsync(role => role.Name.Equals(roleName));
         }
 
