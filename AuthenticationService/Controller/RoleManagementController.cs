@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using UserService.Common;
 using UserService.Controller.Request;
 using UserService.Domain;
@@ -15,10 +16,13 @@ namespace UserService.Controller
     public class RoleManagementController : ControllerBase
     {
         private readonly RoleManagementService roleManagementService;
+        private readonly ILogger<RoleManagementController> logger;
 
-        public RoleManagementController(RoleManagementService roleManagementService)
+        public RoleManagementController(
+            RoleManagementService roleManagementService, ILogger<RoleManagementController> logger)
         {
             this.roleManagementService = roleManagementService;
+            this.logger = logger;
         }
 
         [HttpGet]
@@ -28,12 +32,12 @@ namespace UserService.Controller
             try
             {
                 RoleName name = (RoleName)Enum.Parse(typeof(RoleName), rolename.ToUpper());
+                logger.LogInformation("select role by role name: {0}", name);
                 return Ok(await roleManagementService.GetRoleByRoleNameAsync(name));
             }
             catch (System.Exception ex)
             {
-                // todo Log
-                Console.WriteLine("exception occured: " + ex.Message);
+                logger.LogError("error occuered when get role: {0}", ex.Message);
                 throw new GlobalException(
                     GlobalExceptionMessage.INVALID_ROLE_NAME,
                     GlobalExceptionCode.INVALID_ROLE_NAME,
@@ -54,12 +58,12 @@ namespace UserService.Controller
             {
                 RoleName name = (RoleName)Enum.Parse(typeof(RoleName), request.Name.ToUpper());
                 Role role = await roleManagementService.CreateRoleAsync(name);
+                logger.LogInformation("create role: {0}", role);
                 return CreatedAtAction(nameof(GetRole), new { rolename = role.Name }, role);
             }
             catch (System.Exception ex)
             {
-                // todo Log
-                Console.WriteLine("exception occured: " + ex.Message);
+                logger.LogError("error occured when create role: {0}", ex.Message);
                 throw new GlobalException(
                     GlobalExceptionMessage.INVALID_ROLE_NAME,
                     GlobalExceptionCode.INVALID_ROLE_NAME,
@@ -75,12 +79,12 @@ namespace UserService.Controller
             {
                 RoleName name = (RoleName)Enum.Parse(typeof(RoleName), rolename.ToUpper());
                 await roleManagementService.DeleteRoleAsync(name);
+                logger.LogInformation("delete role: {0}", name);
                 return NoContent();
             }
             catch (System.Exception ex)
             {
-                // todo Log
-                Console.WriteLine("exception occured: " + ex.Message);
+                logger.LogError("error occured when delete role: {0}", ex.Message);
                 throw new GlobalException(
                     GlobalExceptionMessage.INVALID_ROLE_NAME,
                     GlobalExceptionCode.INVALID_ROLE_NAME,

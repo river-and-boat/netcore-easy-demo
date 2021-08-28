@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using UserService.Common;
 using UserService.Controller.Request;
 using UserService.Domain;
@@ -16,16 +17,20 @@ namespace UserService.Controller
     public class UserManagementController : ControllerBase
     {
         private readonly UserManagementService userManagementService;
+        private readonly ILogger<UserManagementController> logger;
 
-        public UserManagementController(UserManagementService userManagementService)
+        public UserManagementController(
+            UserManagementService userManagementService, ILogger<UserManagementController> logger)
         {
             this.userManagementService = userManagementService;
+            this.logger = logger;
         }
 
         [HttpGet]
         [Route("{username}")]
         public async Task<ActionResult<User>> GetUserByUsername(string username)
         {
+            logger.LogInformation("select user by name: {0}", username);
             return Ok(await userManagementService.GetUserByUsernameAsync(username));
         }
 
@@ -39,6 +44,7 @@ namespace UserService.Controller
         [Route("{username}/lock")]
         public async Task<ActionResult> LockUser(string username)
         {
+            logger.LogInformation("lock the user: {0}", username);
             string loginUsername = User.FindFirstValue(ClaimTypes.Name);
             if (loginUsername != null && !username.Equals(loginUsername))
             {
@@ -57,8 +63,10 @@ namespace UserService.Controller
         {
             if (!ModelState.IsValid)
             {
+                logger.LogError("create user failed: {0}", ModelState.Values);
                 return BadRequest();
             }
+            logger.LogInformation("create the user: {0}", request.Name);
             User user = await userManagementService.CreateUser(request);
             return CreatedAtAction(nameof(GetUserByUsername), new { username = user.Name }, user);
         }
@@ -67,6 +75,7 @@ namespace UserService.Controller
         [Route("{username}")]
         public async Task<ActionResult> DeleteUser(string username)
         {
+            logger.LogInformation("delete the user: {0}", username);
             await userManagementService.DeleteUser(username);
             return NoContent();
         }
@@ -86,10 +95,10 @@ namespace UserService.Controller
                 }
                 catch (System.Exception ex)
                 {
-                    // todo log
-                    Console.WriteLine("The given role is not exist: " + ex.Message);
+                    logger.LogError("The given role is not exist: {0}", ex.Message);
                 }
             });
+            logger.LogInformation("assign roles: {0} to the user: {1}", roleNames, username);
             await userManagementService.AssignRoles(username, roleNames);
             return NoContent();
         }

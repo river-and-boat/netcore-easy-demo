@@ -41,3 +41,14 @@
 /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Newtonsoft.Json.dll
 /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Newtonsoft.Json.Bson.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Microsoft.DotNet.PlatformAbstractions.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Microsoft.Extensions.DependencyModel.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Serilog.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Serilog.AspNetCore.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Serilog.Extensions.Hosting.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Serilog.Extensions.Logging.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Serilog.Formatting.Compact.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Serilog.Settings.Configuration.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Serilog.Sinks.Console.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Serilog.Sinks.Debug.dll
+/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/bin/Debug/net5.0/Serilog.Sinks.File.dll
