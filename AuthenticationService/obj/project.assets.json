@@ -3989,7 +3989,7 @@
       "outputPath": "/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/yuzhou.jiang/.config/NuGet/NuGet.Config"
+        "/Users/yuzhou.jiang/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

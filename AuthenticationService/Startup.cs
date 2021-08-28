@@ -45,6 +45,8 @@ namespace AuthenticationService
         {
             app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

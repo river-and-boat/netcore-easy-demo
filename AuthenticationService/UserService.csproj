@@ -31,6 +31,7 @@
     <None Remove="Utils\" />
     <None Remove="Serilog.AspNetCore" />
     <None Remove="Serilog.Sinks.Console" />
+    <None Remove="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
@@ -48,6 +49,7 @@
     <Folder Include="Service\User\" />
     <Folder Include="Data\Repository\" />
     <Folder Include="Common\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />

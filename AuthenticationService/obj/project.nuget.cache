@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yrn1AWtTdV0TwFhARbRPgESVsKCx5yZrux3/JQOF+V7FCFzXxAkcvSKUBfYlDv77k0J4vDEc3nJWI/ko3DzkZA==",
+  "dgSpecHash": "uZbzd5+60LMJi25NtDjOh/VlwaZBgFhPMjgbC7tjKXMRzepUBjZuoen72w/1GcE66Qra1Kvps4HTHF5MtyxJEw==",
   "success": true,
   "projectFilePath": "/Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/UserService.csproj",
   "expectedPackageFiles": [

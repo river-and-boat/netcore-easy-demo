@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using UserService.Common;
@@ -27,6 +28,7 @@ namespace UserService.Controller
 
         [HttpGet]
         [Route("{rolename}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult<Role>> GetRole(string rolename)
         {
             try
@@ -46,12 +48,14 @@ namespace UserService.Controller
         }
 
         [HttpGet]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult<List<Role>>> GetRoles()
         {
             return Ok(await roleManagementService.GetRolesAsync());
         }
 
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> CreateRole([FromBody] RoleChangeRequest request)
         {
             try
@@ -73,6 +77,7 @@ namespace UserService.Controller
 
         [HttpDelete]
         [Route("{rolename}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> DeleteRole(string rolename)
         {
             try

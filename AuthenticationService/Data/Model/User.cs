@@ -32,6 +32,8 @@ namespace UserService.Data.Model
         [Required]
         public string Email { get; set; }
 
+        public string AvatarUrl { get; set; }
+
         [Required]
         public bool Locked { get; set; }
 

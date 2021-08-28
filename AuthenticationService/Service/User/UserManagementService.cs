@@ -5,6 +5,9 @@ using UserService.Data.Repository;
 using UserService.Exception;
 using UserService.Common;
 using UserService.Data.Model;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.IO;
 
 namespace UserService.Service
 {
@@ -134,6 +137,59 @@ namespace UserService.Service
             });
             user.Roles = userRoles;
             await userRepository.UpdateUserAsync(user);
+        }
+
+        public async Task UploadAvatarAsync(
+            string rootPath, string filename, string username, IFormFile avatar)
+        {
+            string relativePath = Guid.NewGuid() + "_"
+                + filename.Substring(filename.LastIndexOf("//") + 1);
+            string fullPath = rootPath + relativePath;
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                await avatar.CopyToAsync(stream);
+                await stream.FlushAsync();
+            }
+            Data.Model.User user = await userRepository.FindUserByUsernameAsync(username);
+            if (user == null)
+            {
+                throw new GlobalException(
+                    GlobalExceptionMessage.USER_NAME_NOT_EXIST,
+                    GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
+                    GlobalStatusCode.BAD_REQUEST
+                );
+            }
+            user.AvatarUrl = relativePath;
+            await userRepository.UpdateUserAsync(user);
+        }
+
+        public async Task<Tuple<byte[], string>> GetAvatar(string username, string rootPath)
+        {
+            Data.Model.User user = await userRepository.FindUserByUsernameAsync(username);
+            if (user == null)
+            {
+                throw new GlobalException(
+                    GlobalExceptionMessage.USER_NAME_NOT_EXIST,
+                    GlobalExceptionCode.USER_NAME_NOT_EXIST_CODE,
+                    GlobalStatusCode.BAD_REQUEST
+                );
+            }
+            string fullPath = rootPath + "//" + user.AvatarUrl;
+            FileInfo fileInfo = new FileInfo(fullPath);
+            if (fileInfo.Exists)
+            {
+                using (FileStream fileStream = fileInfo.OpenRead())
+                {
+                    byte[] buffer = new byte[fileInfo.Length];
+                    await fileStream.ReadAsync(buffer, 0, Convert.ToInt32(fileInfo.Length));
+                    return new Tuple<byte[], string>(buffer, fileInfo.Extension);
+                }
+            }
+            throw new GlobalException(
+                GlobalExceptionMessage.AVATAR_NOT_EXIST,
+                GlobalExceptionCode.AVATAR_NOT_EXIST,
+                GlobalStatusCode.BAD_REQUEST
+            );
         }
     }
 }

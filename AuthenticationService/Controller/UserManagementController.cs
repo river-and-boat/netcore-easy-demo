@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using UserService.Common;
@@ -16,17 +20,24 @@ namespace UserService.Controller
     [Route("api/users")]
     public class UserManagementController : ControllerBase
     {
+        private static readonly string FILE_PATH = "//Images//";
+
         private readonly UserManagementService userManagementService;
         private readonly ILogger<UserManagementController> logger;
+        private readonly IWebHostEnvironment environment;
 
         public UserManagementController(
-            UserManagementService userManagementService, ILogger<UserManagementController> logger)
+            UserManagementService userManagementService,
+            ILogger<UserManagementController> logger,
+            IWebHostEnvironment environment)
         {
             this.userManagementService = userManagementService;
             this.logger = logger;
+            this.environment = environment;
         }
 
         [HttpGet]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult<List<User>>> GetUsers()
         {
             return Ok(await userManagementService.GetUsersAsync());
@@ -34,13 +45,24 @@ namespace UserService.Controller
 
         [HttpGet]
         [Route("lock")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult<List<User>>> GetLockedUsers()
         {
             return Ok(await userManagementService.GetLockedUsersAsync());
         }
 
         [HttpGet]
+        [Route("self")]
+        [Authorize(Roles = "ADMIN, USER, CUSTOMER")]
+        public async Task<ActionResult<User>> GetSelfInfo()
+        {
+            string loginUsername = User.FindFirstValue(ClaimTypes.Name);
+            return await GetUserByUsername(loginUsername);
+        }
+
+        [HttpGet]
         [Route("{username}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult<User>> GetUserByUsername(string username)
         {
             logger.LogInformation("select user by name: {0}", username);
@@ -49,11 +71,12 @@ namespace UserService.Controller
 
         [HttpPatch]
         [Route("{username}/lock")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> LockUser(string username)
         {
             logger.LogInformation("lock the user: {0}", username);
             string loginUsername = User.FindFirstValue(ClaimTypes.Name);
-            if (loginUsername != null && !username.Equals(loginUsername))
+            if (!username.Equals(loginUsername))
             {
                 await userManagementService.LockUserAsync(username);
                 return NoContent();
@@ -67,11 +90,12 @@ namespace UserService.Controller
 
         [HttpPatch]
         [Route("{username}/unlock")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> UnLockUser(string username)
         {
             logger.LogInformation("unlock the user: {0}", username);
             string loginUsername = User.FindFirstValue(ClaimTypes.Name);
-            if (loginUsername != null && !username.Equals(loginUsername))
+            if (!username.Equals(loginUsername))
             {
                 await userManagementService.UnLockUserAsync(username);
                 return NoContent();
@@ -84,6 +108,7 @@ namespace UserService.Controller
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> CreateUser([FromBody] CreateUserRequest request)
         {
             if (!ModelState.IsValid)
@@ -98,6 +123,7 @@ namespace UserService.Controller
 
         [HttpDelete]
         [Route("{username}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> DeleteUser(string username)
         {
             logger.LogInformation("delete the user: {0}", username);
@@ -107,6 +133,7 @@ namespace UserService.Controller
 
         [HttpPost]
         [Route("{username}/roles")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult> AssignRoles(
             string username, [FromBody] List<RoleChangeRequest> requests)
         {
@@ -126,6 +153,37 @@ namespace UserService.Controller
             logger.LogInformation("assign roles: {0} to the user: {1}", roleNames, username);
             await userManagementService.AssignRoles(username, roleNames);
             return NoContent();
+        }
+
+        [HttpPost]
+        [Route("avatar")]
+        [Authorize(Roles = "ADMIN, USER, CUSTOMER")]
+        public async Task<ActionResult> UploadAvatar(IFormFile avatar)
+        {
+            string loginUsername = User.FindFirstValue(ClaimTypes.Name);
+            string filepath = environment.ContentRootPath + FILE_PATH;
+            string extension = Path.GetExtension(avatar.FileName).ToLower();
+            if (avatar.Length > 0 && (extension == ".jpg" || extension == ".jpeg" || extension == ".png"))
+            {
+                await userManagementService.UploadAvatarAsync(filepath, avatar.FileName, loginUsername, avatar);
+                return NoContent();
+            }
+            throw new GlobalException(
+                GlobalExceptionMessage.INVALID_AVATAR_FORMAT,
+                GlobalExceptionCode.INVALID_AVATAR_FORMAT,
+                GlobalStatusCode.BAD_REQUEST
+            );
+        }
+
+        [HttpGet]
+        [Route("avatar")]
+        [Authorize(Roles = "ADMIN, USER, CUSTOMER")]
+        public async Task<FileContentResult> GetAvatar()
+        {
+            string loginUsername = User.FindFirstValue(ClaimTypes.Name);
+            Tuple<byte[], string> resource = await userManagementService.GetAvatar(loginUsername,
+                environment.ContentRootPath + FILE_PATH);
+            return File(resource.Item1, "image" + resource.Item2.Replace(".", "/"));
         }
     }
 }

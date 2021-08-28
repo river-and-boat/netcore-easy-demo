@@ -9,8 +9,12 @@
         public static readonly int USER_LOCK_SELF_CODE = 1005;
         public static readonly int USER_UNLOCK_SELF_CODE = 1006;
         public static readonly int USER_HAS_EXIST = 1007;
+        public static readonly int USER_NOT_LOGIN = 1008;
 
         public static readonly int ROLE_HAS_EXIST = 2001;
         public static readonly int INVALID_ROLE_NAME = 2002;
+
+        public static readonly int INVALID_AVATAR_FORMAT = 3001;
+        public static readonly int AVATAR_NOT_EXIST = 3002;
     }
 }
