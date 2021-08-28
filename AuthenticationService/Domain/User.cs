@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UserService.Common;
 using UserService.Exception;
 
 namespace UserService.Domain
@@ -28,8 +29,7 @@ namespace UserService.Domain
 
         public void AssertUsernamePasswordMatched(string password)
         {
-            // todo decode password
-            if (password != Password)
+            if (password != AesAlgorithms.DecryptAes(Password))
             {
                 throw new GlobalException(
                     GlobalExceptionMessage.USER_PASSWORD_ERROR,
