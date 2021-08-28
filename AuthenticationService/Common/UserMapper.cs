@@ -15,7 +15,7 @@ namespace UserService.Common
                 {
                     Id = user.Id,
                     Name = user.Name,
-                    Password = user.Password,
+                    Password = AesAlgorithms.DecryptAes(user.Password),
                     Address = user.Address,
                     Country = user.Country,
                     Mobile = user.Mobile,

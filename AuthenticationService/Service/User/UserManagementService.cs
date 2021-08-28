@@ -84,7 +84,7 @@ namespace UserService.Service
             Data.Model.User user = new Data.Model.User()
             {
                 Name = request.Name,
-                Password = request.Password,
+                Password = AesAlgorithms.EncryptAes(request.Password),
                 Address = request.Address,
                 Country = request.Country,
                 Email = request.Email,

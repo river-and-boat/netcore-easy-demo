@@ -159,3 +159,75 @@ System.IO.DirectoryNotFoundException: Could not find a part of the path '/Users/
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at UserService.Middleware.GlobalExceptionHandlerMiddleware.Invoke(HttpContext context) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Middleware/GlobalExceptionHandlerMiddleware.cs:line 21
    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2021-08-28 21:59:07.119 +08:00 [INF] select user by name: river-and-boat
+2021-08-28 21:59:16.488 +08:00 [INF] unlock the user: vera_zhang
+2021-08-28 23:35:31.386 +08:00 [ERR] Connection id "0HMBA75RD725E", Request id "0HMBA75RD725E:00000002": An unhandled exception was thrown by the application.
+System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at UserService.Common.AesAlgorithms.DecryptAes(String password) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Common/AesAlgorithms.cs:line 28
+   at UserService.Common.UserMapper.MapDataUserToDomainUser(User user) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Common/UserMapper.cs:line 14
+   at UserService.Service.UserManagementService.GetUserByUsernameAsync(String username) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Service/User/UserManagementService.cs:line 28
+   at UserService.Service.Authentication.JwtAuthenticationService.GenerateToken(LoginRequest request) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Service/Authentication/JwtAuthenticationService.cs:line 22
+   at UserService.Controller.AuthenticationController.RequestToken(LoginRequest request) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Controller/AuthenticationController.cs:line 30
+   at lambda_method5(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at UserService.Middleware.GlobalExceptionHandlerMiddleware.Invoke(HttpContext context) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Middleware/GlobalExceptionHandlerMiddleware.cs:line 21
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2021-08-28 23:41:53.666 +08:00 [ERR] Connection id "0HMBA79DAODPE", Request id "0HMBA79DAODPE:00000002": An unhandled exception was thrown by the application.
+System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at UserService.Common.AesAlgorithms.DecryptAes(String password) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Common/AesAlgorithms.cs:line 28
+   at UserService.Common.UserMapper.MapDataUserToDomainUser(User user) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Common/UserMapper.cs:line 14
+   at UserService.Service.UserManagementService.GetUserByUsernameAsync(String username) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Service/User/UserManagementService.cs:line 28
+   at UserService.Service.Authentication.JwtAuthenticationService.GenerateToken(LoginRequest request) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Service/Authentication/JwtAuthenticationService.cs:line 22
+   at UserService.Controller.AuthenticationController.RequestToken(LoginRequest request) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Controller/AuthenticationController.cs:line 30
+   at lambda_method5(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at UserService.Middleware.GlobalExceptionHandlerMiddleware.Invoke(HttpContext context) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Middleware/GlobalExceptionHandlerMiddleware.cs:line 21
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2021-08-28 23:43:19.066 +08:00 [ERR] Connection id "0HMBA79MGAE4U", Request id "0HMBA79MGAE4U:00000002": An unhandled exception was thrown by the application.
+System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at UserService.Common.AesAlgorithms.DecryptAes(String password) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Common/AesAlgorithms.cs:line 28
+   at UserService.Common.UserMapper.MapDataUserToDomainUser(User user) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Common/UserMapper.cs:line 14
+   at UserService.Service.UserManagementService.GetUserByUsernameAsync(String username) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Service/User/UserManagementService.cs:line 28
+   at UserService.Service.Authentication.JwtAuthenticationService.GenerateToken(LoginRequest request) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Service/Authentication/JwtAuthenticationService.cs:line 22
+   at UserService.Controller.AuthenticationController.RequestToken(LoginRequest request) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Controller/AuthenticationController.cs:line 30
+   at lambda_method5(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at UserService.Middleware.GlobalExceptionHandlerMiddleware.Invoke(HttpContext context) in /Users/yuzhou.jiang/Desktop/NetWithKafka/NetFirstDemo/AuthenticationService/Middleware/GlobalExceptionHandlerMiddleware.cs:line 21
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2021-08-28 23:45:32.095 +08:00 [INF] create the user: vera_zhang
