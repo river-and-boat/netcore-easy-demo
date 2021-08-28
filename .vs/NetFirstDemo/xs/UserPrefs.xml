@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{9362E85C-C436-49C2-BD06-B14B3595D7B7}|AuthenticationService">
   <MonoDevelop.Ide.ItemProperties.APIGatewayService FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.PlanService FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Service/User/UserManagementService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AuthenticationService/Controller/UserManagementController.cs">
     <Files>
       <File FileName="AuthenticationService/Controller/Request/RoleChangeRequest.cs" Line="11" Column="1" />
       <File FileName="AuthenticationService/Data/Repository/UserRepository.cs" Line="38" Column="33" />
@@ -9,18 +9,17 @@
       <File FileName="AuthenticationService/Startup.cs" Line="44" Column="53" />
       <File FileName="AuthenticationService/Domain/User.cs" Line="18" Column="39" />
       <File FileName="AuthenticationService/Common/UserMapper.cs" Line="26" Column="14" />
-      <File FileName="AuthenticationService/Controller/UserManagementController.cs" Line="168" Column="57" />
-      <File FileName="AuthenticationService/Service/User/UserManagementService.cs" Line="146" Column="62" />
+      <File FileName="AuthenticationService/Controller/UserManagementController.cs" Line="165" Column="77" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NetFirstDemo" expanded="True">
             <Node name="UserService" expanded="True">
+              <Node name="Controller" expanded="True" />
+              <Node name="Images" expanded="True" selected="True" />
               <Node name="Service" expanded="True">
-                <Node name="User" expanded="True">
-                  <Node name="UserManagementService.cs" selected="True" />
-                </Node>
+                <Node name="User" expanded="True" />
               </Node>
             </Node>
           </Node>
